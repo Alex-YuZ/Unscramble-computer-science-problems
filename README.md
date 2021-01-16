@@ -1,6 +1,6 @@
 # Unscramble Computer Science  Problems
 ## Project Overview
-This project consists of five tasks based on a fabricated set of calls and texts exchanged during September 2016. It will analyze and answer questions about the texts and calls contained in the dataset via **Python** language. At the end, run time analysis will be performed on those solutions and determine its efficiency.
+This project consists of five tasks based on a fabricated set of calls and texts exchanged during September 2016. It will analyze and answer questions about the texts and calls contained in the dataset using **Python** language. At the end, run time analysis will be performed on those solutions and determine its efficiency.
 
 ## About the data
 The text and call data are provided in `csv` files.

@@ -43,3 +43,82 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+# PART A.
+def call_dict(data):
+    """
+    Generate a dictionay with sending call as the key and a list of receiving calls as values 
+    
+    Paramaters:
+    -----------
+    data: a two_dimensional list
+    
+    Returns:
+    --------
+    dict. Transform certain cols into a dictionary object.
+    
+    
+    """
+    result = dict()
+    for item in calls:
+        if not result.get(item[0]):
+            result[item[0]] = []
+            result[item[0]].append(item[1])
+            
+        else:
+            result[item[0]].append(item[1])
+            
+    return result
+
+def starts_with(prefix, data_dict):
+    """
+    Generate a list of receiving calls from a given prefix of sending calls.
+    
+    Paramaters:
+    -----------
+        prefix: str. A given prefix string to match with.
+        data_dict: dict. A dictionaty containing sending call as the key and receiving call lists as values.
+    
+    Returns:
+    --------
+        list. Receiving call lists with a match.
+    
+    """
+    result = []
+    for key, val in data_dict.items():
+        if key.startswith(prefix):
+            result += data_dict[key]
+        
+    return result
+            
+
+data_dict = call_dict(calls)
+
+uniq_vals = set(starts_with('(080)', data_dict))
+
+res = set()
+for i in uniq_vals:
+    if i.startswith('('):
+        ends_loc = i.find(')')
+        res.add(i[: ends_loc+1])
+    elif i.startswith(('7', '8', '9')):
+        res.add(i[:4])
+        
+codes_fs = "The numbers called by people in Bangalore have codes: \n{}".format('\n'.join(sorted(list(res))))
+print(codes_fs)
+
+
+# PART B.
+
+count = 0
+
+for answer in starts_with('(080)', data_dict):
+    if answer.startswith('(080)'):
+        count += 1
+
+total_calls = len(starts_with('(080)', data_dict))
+count_pct = round(count/total_calls * 100, 2)
+
+pct_fs = "{} percent of calls from fixed lines in Bangalore are calls to other \
+fixed lines in Bangalore.".format(count_pct)
+
+print(pct_fs)
