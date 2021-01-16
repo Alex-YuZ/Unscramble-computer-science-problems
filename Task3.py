@@ -86,7 +86,7 @@ def starts_with(prefix, data_dict):
     result = []
     for key, val in data_dict.items():
         if key.startswith(prefix):
-            result += data_dict[key]
+            result += val
         
     return result
             

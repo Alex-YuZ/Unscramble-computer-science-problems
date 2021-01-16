@@ -45,6 +45,5 @@ for key, val in call_dict.items():
         max_duration = val
         max_key = key
         
-max_duration_sf = "{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(max_key, \
-                                                                                                        max_duration)
+max_duration_sf = "{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(max_key,max_duration)
 print(max_duration_sf)

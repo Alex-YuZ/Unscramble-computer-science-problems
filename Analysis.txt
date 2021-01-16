@@ -8,9 +8,29 @@ algorithm:
 3. union operation between sets: O(n)
 4. get the length of a set: O(1)
 
-So, the worst-case complexity is O(n)
+So, the worst-case complexity is O(n).
 
 ============Task2===============
 algorithm
 1. transform a column of the whole data set into a list: O(n)
-2. 
+2. extract, convert and combine certain columns from the original dataset into a new list: O(n^2)
+3. convert the list of lists to a dictionary: O(n)
+4. find the maximum key-value pair from the dictionary based on a dictionary's value: O(n)
+
+So the worst-case complexity is O(n^2).
+
+===========Task3=================
+algorithm
+1. Generate a dictionay with sending call as the key and a list of receiving calls as values: O(n)
+2. Generate a list of receiving calls from a given prefix of sending calls: O(n)
+3. sort a list: O(nlogn)
+
+So the worst-case complexity is O(nlogn).
+
+============Task4=================
+algorithm
+1. transform a column of the whole data set into a set object: O(n)
+2. difference operation between sets: O(n)
+3. sort a list: O(nlogn)
+
+So the worst-case complexity is O(nlogn).
