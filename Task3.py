@@ -95,14 +95,17 @@ data_dict = call_dict(calls)
 
 uniq_vals = set(starts_with('(080)', data_dict))
 
+# initialize a set object to store the unique numbers with a match
 res = set()
+
 for i in uniq_vals:
     if i.startswith('('):
         ends_loc = i.find(')')
-        res.add(i[: ends_loc+1])
+        res.add(i[: ends_loc+1])  # find the fixed line numbers
     elif i.startswith(('7', '8', '9')):
-        res.add(i[:4])
-        
+        res.add(i[:4])  # find the mobile numbers (except those started with 140)
+
+# format the print-out string        
 codes_fs = "The numbers called by people in Bangalore have codes: \n{}".format('\n'.join(sorted(list(res))))
 print(codes_fs)
 
@@ -111,13 +114,18 @@ print(codes_fs)
 
 count = 0
 
+# count the receiving calls that also start with '(080)'
 for answer in starts_with('(080)', data_dict):
     if answer.startswith('(080)'):
         count += 1
 
+# calculate total records that starts with '(080)'
 total_calls = len(starts_with('(080)', data_dict))
+
+# get the percentage
 count_pct = round(count/total_calls * 100, 2)
 
+# format the print-out string
 pct_fs = "{} percent of calls from fixed lines in Bangalore are calls to other \
 fixed lines in Bangalore.".format(count_pct)
 

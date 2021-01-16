@@ -25,15 +25,35 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 def col_set(idx, data):
+    """
+    Convert a list with a given column index into a set pbject.
+    
+    Parameters:
+    ----------
+    idx: int. 
+    data: list. The dataset of 2D lists
+    
+    Returns:
+    --------
+    a set
+    
+    """
+    
     val_list = [item[idx] for item in data]
     return set(val_list)
 
+# get the unique numbers from given column index from calls dataser
 send_calls_uniq = col_set(0, calls)
 receive_calls_uniq = col_set(1, calls)
+
+# get the unique numbers from given column index from texts dataser
 send_texts_uniq = col_set(0, texts)
 receive_texts_uniq = col_set(1, texts)
 
+# find the potential telemarketers numbers
 telemarketers = send_calls_uniq - receive_calls_uniq - send_texts_uniq - receive_texts_uniq
 
+# format the print-out string
 telemarketers_fs = "These numbers could be telemarketers: \n{}".format('\n'.join(sorted(list(telemarketers))))
+
 print(telemarketers_fs)

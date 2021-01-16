@@ -20,6 +20,19 @@ Print a message:
 September 2016.".
 """
 def col_list(idx, data):
+    """
+    Extract a certain column of the input 2D lists and store it in a list.
+    
+    Paramaters:
+    ----------
+    idx: int. A given column index
+    data: list. The dataset of 2D lists
+    
+    Returns:
+    --------
+    list
+    
+    """
     val_list = [item[idx] for item in data]
     return val_list
 
@@ -28,6 +41,7 @@ def col_list(idx, data):
 call_lists = list(zip(col_list(0, calls), map(int, col_list(3, calls)))) \
             + list(zip(col_list(1, calls), map(int, col_list(3, calls))))
 
+# initialize a new dict object to store the number and duration time.
 call_dict = {}
 for i, j in call_lists:
     if not call_dict.get(i):
@@ -35,15 +49,15 @@ for i, j in call_lists:
     else:
         call_dict[i] += j
         
-# print(call_dict)
-
+# find the maximun value of duration in the keys of call_dict.
 max_key = None
 max_duration = 0
-
 for key, val in call_dict.items():
     if val > max_duration:
         max_duration = val
         max_key = key
-        
+
+# format the print-out string        
 max_duration_sf = "{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(max_key,max_duration)
+
 print(max_duration_sf)

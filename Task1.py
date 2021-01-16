@@ -19,6 +19,19 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 def col_list(idx, data):
+    """
+    Extract a certain column of the input 2D lists and store it in a list.
+    
+    Paramaters:
+    ----------
+    idx: int. A given column index
+    data: list. The dataset of 2D lists
+    
+    Returns:
+    --------
+    list
+    
+    """
     val_list = [item[idx] for item in data]
     return val_list
     
