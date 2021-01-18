@@ -44,18 +44,11 @@ call_lists = list(zip(col_list(0, calls), map(int, col_list(3, calls)))) \
 # initialize a new dict object to store the number and duration time.
 call_dict = {}
 for i, j in call_lists:
-    if not call_dict.get(i):
-        call_dict[i] = j
-    else:
-        call_dict[i] += j
+    call_dict[i] = call_dict.get(i, 0) + j
         
 # find the maximun value of duration in the keys of call_dict.
-max_key = None
-max_duration = 0
-for key, val in call_dict.items():
-    if val > max_duration:
-        max_duration = val
-        max_key = key
+max_key = max(call_dict, key=lambda x: call_dict[x])
+max_duration = max(call_dict.values())
 
 # format the print-out string        
 max_duration_sf = "{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(max_key,max_duration)

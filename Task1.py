@@ -18,41 +18,30 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
-def col_list(idx, data):
+def get_uniq(data):
     """
-    Extract a certain column of the input 2D lists and store it in a list.
+    Combine the sending and receiving numbers of the data and store the unique ones in a set object.
     
-    Paramaters:
-    ----------
-    idx: int. A given column index
-    data: list. The dataset of 2D lists
-    
+    Parameters:
+    -----------
+        data: a 2D list containing the records of texts and calls information.
+        
     Returns:
     --------
-    list
+        set: unique numbers
     
     """
-    val_list = [item[idx] for item in data]
-    return val_list
-    
+    res = set()
+    for itm in data:
+        res.update(set([itm[0], itm[1]]))
+        
+    return res
 
-# get the unique values in sending numbers column in the texts
-send_texts_uniq = set(col_list(0, texts))
-
-# get the unique values in receiving numbers column in the texts
-receive_texts_uniq = set(col_list(1, texts))
-
-# get the unique values in calling numbers column in the calls
-send_calls_uniq = set(col_list(0, calls))
-# get the unique values in receiving numbers column in the calls
-receive_calls_uniq = set(col_list(1, calls))
-
-# get the unique values in all four columns above
-uniq_nums = send_texts_uniq | receive_texts_uniq | send_calls_uniq | receive_calls_uniq
-# calculate the length of these unique values
-uniq_length = len(uniq_nums)
+texts_uniq = get_uniq(texts)
+calls_uniq = get_uniq(calls)
+uniq_both = texts_uniq | calls_uniq
 
 # formatted string
-uniq_fs = "There are {} different telephone numbers in the records.".format(uniq_length)
+uniq_fs = "There are {} different telephone numbers in the records.".format(len(uniq_both))
 
 print(uniq_fs)
