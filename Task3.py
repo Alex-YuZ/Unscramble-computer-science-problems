@@ -3,6 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+from collections import defaultdict
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -58,14 +59,9 @@ def call_dict(data):
     
     
     """
-    result = dict()
+    result = defaultdict(list)
     for item in calls:
-        if not result.get(item[0]):
-            result[item[0]] = []
-            result[item[0]].append(item[1])
-            
-        else:
-            result[item[0]].append(item[1])
+        result[item[0]].append(item[1])
             
     return result
 

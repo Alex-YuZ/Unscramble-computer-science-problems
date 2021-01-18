@@ -24,7 +24,7 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
-def col_set(idx, data):
+def col_set(data, *idx):
     """
     Convert a list with a given column index into a set pbject.
     
@@ -38,17 +38,15 @@ def col_set(idx, data):
     a set
     
     """
+    i, j = idx
+    return set([item[i] for item in data]), set([item[j] for item in data])
     
-    val_list = [item[idx] for item in data]
-    return set(val_list)
 
-# get the unique numbers from given column index from calls dataser
-send_calls_uniq = col_set(0, calls)
-receive_calls_uniq = col_set(1, calls)
+# get the unique numbers from given column index from calls dataset
+send_calls_uniq, receive_calls_uniq = col_set(calls, 0, 1)
 
-# get the unique numbers from given column index from texts dataser
-send_texts_uniq = col_set(0, texts)
-receive_texts_uniq = col_set(1, texts)
+# get the unique numbers from given column index from texts dataset
+send_texts_uniq, receive_texts_uniq = col_set(texts, 0, 1)
 
 # find the potential telemarketers numbers
 telemarketers = send_calls_uniq - receive_calls_uniq - send_texts_uniq - receive_texts_uniq

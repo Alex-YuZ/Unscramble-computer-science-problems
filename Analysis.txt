@@ -1,29 +1,35 @@
 ===========Task0===============
-As this is to get the head and tail of a list, there is no need to iterate all over the whole object, that is to say no matter what size the input is, the run time would be at a constant rate, so the time complexity (Worst-Case ) in Big-O Notation is O(1).
+As this is to get the head and tail of a list, there is no need to iterate all over the whole dataset, 
+that is to say no matter what size the input is, the run time would be at a constant rate, so the time 
+complexity (Worst-Case ) in Big-O Notation is O(1).
 
 ============Task1==============
 algorithm:
-1. transform a column of the whole data set into a list: O(n)
-2. convert a list to a set: O(n)
-3. union operation between sets: O(n)
-4. get the length of a set: O(1)
+1. iterate each row of texts dataset, convert and store them in a set() object: O(len(texts))
+2. iterate each row of calls dataset, convert and store them in a set() object: O(len(calls))
+3. union operation between two sets: O(len(texts) + len(calls))
 
-So, the worst-case complexity is O(n).
+So the worst-case complexity is O(len(texts) + len(calls)).
+
 
 ============Task2===============
 algorithm
-1. transform a column of the whole data set into a list: O(n)
-2. extract, convert and combine certain columns from the original dataset into a new list: O(n^2)
-3. convert the list of lists to a dictionary: O(n)
-4. find the maximum key-value pair from the dictionary based on a dictionary's value: O(n)
+1. Iterate calls to store the sending and receiving numbers and their duration time into a new
+list: O(n)
+2. Iterate the new list above and convert it to a dictionary, e.g. number as the key and duration
+as the value: O(n)
+4. use built-in max() function to find the maximum key-value pair from the dictionary based on 
+the value: O(1)
 
-So the worst-case complexity is O(n^2).
+So the worst-case complexity is O(n).
 
 ===========Task3=================
 algorithm
-1. Generate a dictionay with sending call as the key and a list of receiving calls as values: O(n)
-2. Generate a list of receiving calls from a given prefix of sending calls: O(n)
-3. sort a list: O(nlogn)
+1. Iterate calls dataset and generate a dictionay with sending call as the key and a list of 
+receiving calls as values: O(n)
+2. Define a function to generate the list of receiving calls based on a given prefix 
+of sending calls: O(n)
+3. Use built-in method sorted() to sort a list: O(nlogn)
 
 So the worst-case complexity is O(nlogn).
 
@@ -31,6 +37,6 @@ So the worst-case complexity is O(nlogn).
 algorithm
 1. transform a column of the whole data set into a set object: O(n)
 2. difference operation between sets: O(n)
-3. sort a list: O(nlogn)
+3. Use built-in method sorted() to sort a list: O(nlogn)
 
 So the worst-case complexity is O(nlogn).
